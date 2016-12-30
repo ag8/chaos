@@ -1,7 +1,5 @@
 package org.ag.ants;
 
-import javax.swing.*;
-import java.awt.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -12,10 +10,9 @@ public class Main {
 //    public static final int DENSITY = 1; // out of 100
 
 
-    public static int DIM;
-    private static final BigInteger STEPS = BigInteger.TEN.pow(25);
+    private static final BigInteger STEPS = BigInteger.TEN.pow(125); // Should definitely work up to DIM=20
     private static final BigInteger LOOP_STATE_STEP = BigInteger.TEN.multiply(BigInteger.ONE.add(BigInteger.ONE));
-
+    public static int DIM;
     BWGridCell[][] grid;
     List<LangtonsAnt> ants;
 
