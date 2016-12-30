@@ -59,6 +59,10 @@ public class Main {
         ants.add(new LangtonsAnt(50, 47, 1));
         ants.add(new LangtonsAnt(50, 50, 2));
         ants.add(new LangtonsAnt(47, 50, 3));
+        ants.add(new LangtonsAnt(47, 47, 3));
+        ants.add(new LangtonsAnt(50, 47, 2));
+        ants.add(new LangtonsAnt(50, 50, 1));
+        ants.add(new LangtonsAnt(47, 50, 0));
 
 
         // Run it!
