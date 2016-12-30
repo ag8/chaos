@@ -12,7 +12,7 @@ public class Main {
 
 
     public static final int DIM = 100;
-    private static final int STEPS = 1000000;
+    private static final int STEPS = Integer.MAX_VALUE;
 
     BWGridCell[][] grid;
     List<LangtonsAnt> ants;
