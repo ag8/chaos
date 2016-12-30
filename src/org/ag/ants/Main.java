@@ -4,20 +4,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
-    public static final int DIM = 100;
-    private static final int STEPS = 10000;
+    public static final int DENSITY = 13; // out of 100
 
-<<<<<<< HEAD
-    BWGridCell[][] grid; 
-=======
+
+    public static final int DIM = 100;
+    private static final int STEPS = 1000000;
+
     BWGridCell[][] grid;
->>>>>>> f823156bd2e22a1ad9e2410f4257c4079524a05d
     List<LangtonsAnt> ants;
 
     List<Double> whiteFraction;
 
+    static Random rand = new Random(123L);
 
     public static void main(String[] args) throws InterruptedException {
         new Main().run();
@@ -53,9 +55,11 @@ public class Main {
 
 
         ants = new ArrayList<>();
-        for (int i = 0; i < DIM; i += 3) {
-            for (int j = 0; j < DIM; j += 7) {
-                ants.add(new LangtonsAnt(i, j));
+        for (int i = 0; i < DIM; i++) {
+            for (int j = 0; j < DIM; j++) {
+                if (randInt(0, 100) < DENSITY) {
+                    ants.add(new LangtonsAnt(i, j));
+                }
             }
         }
 
@@ -65,10 +69,6 @@ public class Main {
         for (int i = 0; i < STEPS; i++) {
 //            System.out.println("Step " + i);
             for (LangtonsAnt ant : ants) {
-                if (ant.getX() < 0 || ant.getY() < 0 || ant.getX() > DIM - 1 || ant.getY() > DIM - 1) {
-                    continue;
-                }
-
                 BWGridCell current = grid[ant.getX()][ant.getY()];
                 int[] toChange = ant.move(current.getState());
                 grid[toChange[0]][toChange[1]].toggle();
@@ -100,5 +100,9 @@ public class Main {
         }
 
         return (double) c / Math.pow((double) DIM, (double) 2);
+    }
+
+    public static int randInt(int min, int max) {
+        return rand.nextInt((max - min) + 1) + min;
     }
 }

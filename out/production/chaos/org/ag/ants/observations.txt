@@ -1,0 +1,16 @@
+For DIM = 10:
+
+F(1,1) is seizure-inducing fill
+F(2,2) is seizure-inducing grid
+F(3,3) is a converger that descends into chaos
+F(4,4) is a cute dance
+F(5,5) is a cute dance
+F(6,6) is a converger that descends into chaos
+F(7,7) is a converger that descends into chaos
+F(8,8) is a converger that descends into chaos
+F(9,9) is a k-connector that descends into chaos
+F(10,10) is a k-disconnector
+F(11,11) is a k-connectro that descends into chaos
+
+
+To do: make sure the board divides (but then all should be k-disconnectors or cute dances!)

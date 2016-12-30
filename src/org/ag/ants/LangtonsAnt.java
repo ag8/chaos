@@ -3,6 +3,8 @@ package org.ag.ants;
 import org.ag.ants_utils.Direction;
 import org.ag.elements.Ant;
 
+import static org.ag.ants.Main.*;
+
 public class LangtonsAnt implements Ant {
     private int x;
     private int y;
@@ -49,15 +51,31 @@ public class LangtonsAnt implements Ant {
     private void moveForward() {
         if (this.dir.getDirection() == 0) {
             this.x--;
+
+            if (this.x < 0) {
+                this.x = DIM - 1;
+            }
         }
         if (this.dir.getDirection() == 1) {
             this.y--;
+
+            if (this.y < 0) {
+                this.y = DIM - 1;
+            }
         }
         if (this.dir.getDirection() == 2) {
             this.x++;
+
+            if (this.x > DIM - 1) {
+                this.x = 0;
+            }
         }
         if (this.dir.getDirection() == 3) {
             this.y++;
+
+            if (this.y > DIM - 1) {
+                this.y = 0;
+            }
         }
     }
 }
