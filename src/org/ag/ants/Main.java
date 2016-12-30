@@ -1,6 +1,8 @@
 package org.ag.ants;
 
 import javax.swing.*;
+import java.awt.*;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +13,7 @@ public class Main {
 
 
     public static int DIM;
-    private static final BigInteger STEPS = BigInteger.TEN.pow(10);
+    private static final BigInteger STEPS = BigInteger.TEN.pow(25);
     private static final BigInteger LOOP_STATE_STEP = BigInteger.TEN.multiply(BigInteger.ONE.add(BigInteger.ONE));
 
     BWGridCell[][] grid;
@@ -26,7 +28,9 @@ public class Main {
 //        System.out.println("Hi!");
 
         for (int i = 1; i < 100; i++) {
-            System.out.println("For a torus of size " + i + ", each loop takes " + new Main().run(i) + " steps.");
+            BigInteger numSteps = new Main().run(i);
+            BigDecimal percentageOfPossibleVariants = new BigDecimal(numSteps).divide(BigDecimal.ONE.add(BigDecimal.ONE).pow(i * i), 10, BigDecimal.ROUND_HALF_UP).multiply(BigDecimal.TEN.multiply(BigDecimal.TEN));
+            System.out.println("\tFor a torus of size " + i + ", each loop takes " + numSteps + " steps. (" + percentageOfPossibleVariants + "% visited)");
         }
 //        System.out.println("a");
 //        System.out.println(new Main().run(4));
@@ -35,6 +39,8 @@ public class Main {
     }
 
     private BigInteger run(int dim) throws InterruptedException {
+        System.out.println("Run " + dim + ".");
+
         DIM = dim;
 
 
@@ -59,7 +65,7 @@ public class Main {
 //            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 //        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
 //        }
-
+//
 //        JFrame frame = new JFrame("Langton's Ants!");
 //        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 //        frame.setLayout(new BorderLayout());
@@ -87,6 +93,10 @@ public class Main {
         // Run it!
 
         for (BigInteger i = BigInteger.ONE; i.compareTo(STEPS) < 0; i = i.add(BigInteger.ONE)) {
+            if (i.mod(BigInteger.TEN.pow(7)).equals(BigInteger.ZERO)) {
+                System.out.println("\tCurrently on step " + i + ".");
+            }
+
 //            System.out.println(i);
             if (i.equals(LOOP_STATE_STEP)) {
 //                System.out.println("Saving loop state.");
@@ -100,7 +110,7 @@ public class Main {
                 grid[toChange[0]][toChange[1]].toggle();
             }
 
-//            Thread.sleep(100);
+//            Thread.sleep(10);
 //            frame.setTitle("Langton's Ants! Step " + i + "/" + STEPS);
 //            g.draw(grid);
 
