@@ -8,7 +8,7 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
-    public static final int DENSITY = 13; // out of 100
+//    public static final int DENSITY = 1; // out of 100
 
 
     public static final int DIM = 100;
@@ -55,13 +55,10 @@ public class Main {
 
 
         ants = new ArrayList<>();
-        for (int i = 0; i < DIM; i++) {
-            for (int j = 0; j < DIM; j++) {
-                if (randInt(0, 100) < DENSITY) {
-                    ants.add(new LangtonsAnt(i, j));
-                }
-            }
-        }
+        ants.add(new LangtonsAnt(47, 47, 0));
+        ants.add(new LangtonsAnt(50, 47, 1));
+        ants.add(new LangtonsAnt(50, 50, 2));
+        ants.add(new LangtonsAnt(47, 50, 3));
 
 
         // Run it!
