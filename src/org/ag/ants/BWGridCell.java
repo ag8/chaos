@@ -26,6 +26,22 @@ public class BWGridCell implements BWCell {
         state = !state;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BWGridCell that = (BWGridCell) o;
+
+        return state == that.state;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return (state ? 1 : 0);
+    }
+
     public String toString() {
         return "" + state + "";
     }
