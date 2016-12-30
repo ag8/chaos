@@ -9,7 +9,11 @@ public class Main {
     public static final int DIM = 100;
     private static final int STEPS = 10000;
 
+<<<<<<< HEAD
+    BWGridCell[][] grid; 
+=======
     BWGridCell[][] grid;
+>>>>>>> f823156bd2e22a1ad9e2410f4257c4079524a05d
     List<LangtonsAnt> ants;
 
     List<Double> whiteFraction;
