@@ -3,7 +3,7 @@ package org.ag.ants;
 import org.ag.ants_utils.Direction;
 import org.ag.elements.Ant;
 
-import static org.ag.ants.Main.*;
+import static org.ag.ants.Main.DIM;
 
 public class LangtonsAnt implements Ant {
     private int x;
@@ -46,6 +46,10 @@ public class LangtonsAnt implements Ant {
         moveForward();
 
         return changed;
+    }
+
+    public Direction getDirection() {
+        return dir;
     }
 
     private void moveForward() {
