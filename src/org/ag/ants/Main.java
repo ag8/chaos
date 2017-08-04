@@ -24,6 +24,7 @@ public class Main {
     List<Double> whiteFraction;
     BWGridCell[][] loopState;
     Direction loopStateDirection;
+    int[] loopStatePosition;
 
 //    static Random rand = new Random(123L);
 
@@ -134,7 +135,7 @@ public class Main {
     private boolean checkLoop() {
 //        System.out.println(Arrays.deepToString(loopState));
 //        System.out.println(Arrays.deepToString(grid));
-        return Arrays.deepEquals(loopState, grid) && (ants.get(0).getDirection().equals(loopStateDirection));
+        return Arrays.deepEquals(loopState, grid) && (ants.get(0).getDirection().equals(loopStateDirection)) && loopStatePosition[0] == ants.get(0).getX() && loopStatePosition[1] == ants.get(0).getY();
     }
 
     private void saveLoopState() {
@@ -147,6 +148,8 @@ public class Main {
         }
 
         loopStateDirection = ants.get(0).getDirection();
+
+        loopStatePosition = new int[]{ants.get(0).getX(), ants.get(0).getY()};
     }
 
     private void saveStats() {
