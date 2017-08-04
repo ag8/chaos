@@ -31,7 +31,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 //        System.out.println("Hi!");
 
-        for (int i = 1; i < 9; i++) {
+        for (int i = 1; i < 14; i++) {
             BigInteger numSteps = new Main().run(i);
             BigDecimal percentageOfPossibleVariants = new BigDecimal(numSteps).divide(BigDecimal.ONE.add(BigDecimal.ONE).pow(i * i), 10, BigDecimal.ROUND_HALF_UP).multiply(BigDecimal.TEN.multiply(BigDecimal.TEN));
             System.out.println("\tFor a torus of size " + i + ", each loop takes " + numSteps + " steps. (" + percentageOfPossibleVariants + "% visited)");
